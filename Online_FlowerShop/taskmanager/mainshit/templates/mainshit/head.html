@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+{% load static %}
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Онлайн магазин Биба и Боба</title>
+	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'mainshit/css/syte.css' %}">
+</head>
+
+<body>
+
+	<nav class="navbar">
+		<div class="container">
+			<a href="/" class="navbar-brand">Онлайн магазин Биба и Боба</a>
+			<div class="navbar-wrap">
+				<ul class="navbar-menu">
+					<li><a href="#">Избранное</a></li>
+					<li><a href="#">Корзина</a></li>
+					<li><a href="/profile">Профиль</a></li>
+				</ul>
+
+				<a href="#" class="callback">Контакты</a>
+			</div>
+
+		</div>
+	</nav>
+	<nav class="pusto">
+
+	</nav>
+	<nav class="search">
+		<div class="search-box">
+			<input type="text" class="search-txt" placeholder="Поиск">
+			<button type="submit">Найти</button>
+		</div>
+	</nav>
+	{% block body %}{% endblock %}
+</body>
+</html>
