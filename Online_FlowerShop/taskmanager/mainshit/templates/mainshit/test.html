@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+
+
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-        {% for el in Goods_from_BD %}
+    <p id="label1">Text</p>
+    <script type="text/javascript" src="{% static 'mainshit/js/1.js' %}"></script>
+    <img src="/static/logo.jpg">
+    <img src="/static/images/2023/03/24/8d66d08ad1ee4c2e9bb6f7dbaaef5d52.jpg">
+    {% for el in Goods_from_BD %}
         <h3>{{el.title}}</h3>
         <p>{{el.price}}</p>
         <p>{{el.notes}}</p>
@@ -16,7 +24,8 @@
         {% endfor %}
         {% for b in Goods_from_BD %}
 			<h3 >b.tittle</h3>
-            <p>b.picture.ur</p>
+            <p>b.picture.url</p>
+            <img src="/media/logo.jpg">
 			<img src="{{ b.picture.url }}"/>
             <img src="{{ b.picture.url }}" width="200" height="214" alt="" />
 		{% endfor %}

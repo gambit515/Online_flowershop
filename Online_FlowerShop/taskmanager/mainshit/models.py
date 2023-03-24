@@ -6,6 +6,6 @@ class Flowers(models.Model):
     title = models.CharField('Название', max_length=50)
     price = models.IntegerField('Цена Товара')
     notes = models.TextField('Описание')
-    picture = models.ImageField('Фото',upload_to='images/')
+    picture = models.ImageField('Фото',upload_to='images//%Y/%m/%d/', blank=True)
     def __str__(self):
         return self.title
