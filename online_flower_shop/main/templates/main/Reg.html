@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reg</title>
+</head>
+<body>
+    <a href="{% url 'auth' %}">Авторизация</a>
+    <br>
+    <a href="{% url 'reg' %}">Регистрация</a>
+    <br>
+    <a href="{% url 'main' %}">Основная страница</a>
+    <br>
+    <a href="{% url 'prof' %}">Профиль</a>
+    <br>
+    <a href="{% url 'about' %}">О сайте</a>
+    <br>
+    <a href="{% url 'deliv' %}">Доставка</a>
+    <br>
+    <a href="{% url 'start' %}">Стартовая страница</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+      {{ form.first_name }}
+        <br>
+        <label for = "user">Псевдоним пользователя</label>
+        <br>
+        {{ form.username }}
+        <br>
+        <label for = "password">Пароль</label>
+        <br>
+        {{ form.password }}
+        <br>
+		<label for = "Dpassword">Подтверждение пароля</label>
+        <br>
+        {{ form.password2 }}
+        <br>
+		<label for = "mail">e-mail</label>
+        <br>
+        {{ form.email }}
+        <br>
+		<label for = "user">Выберите роль на сайте</label>
+        <br>
+        {{ form.groups }}
+        <br>
+		<label for = "user-desc">Введите описание</label>
+        <br>
+        {{ form.last_name }}
+        <br>
+      <button type="submit">Сохранить изменения</button>
+    </form>
+</body>
+</html>

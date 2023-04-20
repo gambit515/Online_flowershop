@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Регистрация в BeeBuzz.NET</title>
+</head>
+
+
+<body>
+	<header>
+        <div class="logo">
+            <table>
+                <tr>
+                    <td>
+                        <a href="{% url 'start' %}"><img src="{% static 'main/images/startsheet_2.png' %}" id="logotip" alt="" width="70" /></a>
+                    </td>
+                    <td>
+                        <div class="namelogo"><label>BeeBuzz.NET</label></div>
+                        <div class="namelogo2"><label>Сервис для поиска специалистов по оказанию услуг</label></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </header>
+
+	<span>{{ error }}</span>
+	
+	<nav class="reg" >
+		<div class="register"  id="animated-element">
+			<nav class="beebuzz" align="center" style="margin-top: 30px;">
+				<div class="beebuzz_name" >
+					<h1>Регистрация в BeeBuzz.NET</h1>
+				</div>
+			</nav>
+
+			<hr style="border: 1px solid #222222; width: 350px; margin-top: -15px;">
+
+			<div class="msg"></div>
+			<form id = "form-group" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<!-- Поставил ID элементам так как использую для скрипта-->
+
+				<div class="form-group">
+					<div class="label-reg"> <label for = "family-user">ФИО пользователя</label> </div>
+					{{ form.first_name }}
+					<!--<input class="vvod" type="text" placeholder="Введите вашу фамилию" id = "userfamily" autocomplete="userfamily">-->
+				</div>
+
+				<div class="form-group">
+					<div class="label-reg"> <label for = "user">Псевдоним пользователя</label> </div>
+					{{ form.username }}
+					<!--<input class="vvod" type="text" placeholder="Введите псевдоним пользователя" id = "user_psevdomin" autocomplete="user_psevdomin">-->
+
+				</div>
+
+				
+
+				
+				
+				<div class="form-group">
+					<div  class="label-reg"> <label for = "password">Пароль</label> </div>
+					{{ form.password }}
+					<!--<input class="vvod1" type="password" placeholder="Введите пароль" id = "password"  autocomplete="current-password">-->
+				</div>
+
+				<div class="form-group">
+					<div  class="label-reg"> <label for = "Dpassword">Подтверждение пароля</label> </div>
+					{{ form.password2 }}
+					<!--<input class="vvod2" type="password" placeholder="Подвердите новый пароль" id = "Dpassword"  autocomplete="current-password">-->
+				</div>
+
+				<div class="form-group">
+					<div class="label-reg"> <label for = "mail">e-mail</label> </div>
+					{{ form.email }}
+					<!--<input class="vvod3" type="email" id = "mail" placeholder="Введите электронную почту" autocomplete="email">-->
+				</div>
+				<div class="form-group">
+					<div class="label-reg"> <label for = "user">Выберите роль на сайте</label> </div>
+					{{ form.groups }}
+					<!--<input class="vvod" type="text" placeholder="Введите псевдоним пользователя" id = "user_psevdomin" autocomplete="user_psevdomin">-->
+
+				</div>
+				<div class="form-group">
+					<div class="label-reg"> <label for = "user-desc">Введите описание</label> </div>
+					{{ form.last_name }}
+
+				</div>
+
+				<!--
+				<div class="form-group">
+					<label>Роль на сайте</label>
+					<div class="form-check">
+						<input class="form-check-input"
+							   type="radio" name="exampleRadios"
+							   id="exampleRadios1"
+							   value="option1" checked>
+
+						<label class="form-check-label"
+							   for="exampleRadios1">
+							Специалист
+						</label>
+					</div>
+
+					изменил ID у радио-баттон
+
+					<div class="form-check">
+						<input class="form-check-input"
+							   type="radio" name="exampleRadios"
+							   id="exampleRadios2" 
+							   value="option2" checked>
+
+						<label class="form-check-label"
+							   for="exampleRadios2">
+							Пользователь
+						</label>
+					</div>
+				</div>
+					
+				<div class="form-group">
+					<div class="label-reg"> <label for = "BirthDay">Дата рождения</label> </div>
+					<input class="vvod4" type="date" placeholder="Введите дату рождения" id = "BirthDay">
+				</div>
+									-->
+									
+				<!-- Работающая кнопка -->
+				<input class="button-reg" type="submit" value="Зарегистрироваться">
+				<label style="font-size: 18px; text-align: center; display: block; margin-bottom: 40px;">Спасибо, что выбрали наш сервис<br>^^</label>
+			</form>
+			
+		</div>
+		<script src="{% static 'main/js/animation.js' %}"> </script>
+	</nav>
+	
+
+
+		<!-- {% static 'main/js/registration_1.js' %} -->
+		
+		
+
+
+	<script src="{% static 'main/js/registration_1.js' %}"> </script>
+	
+	<div class="podval">
+        <p> Контактная информация: &emsp;Phone:+7(902)**** ; &emsp;Email: GambitCorp@gmail.com; &emsp;Адрес: г.Красноярск, КрасРаб 31А; </p>
+    </div>
+
+</body>
+</html>
+
+
+<!-- -->

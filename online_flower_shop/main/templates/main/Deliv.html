@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deliv</title>
+</head>
+<body>
+    <a href="{% url 'auth' %}">Авторизация</a>
+    <br>
+    <a href="{% url 'reg' %}">Регистрация</a>
+    <br>
+    <a href="{% url 'main' %}">Основная страница</a>
+    <br>
+    <a href="{% url 'prof' %}">Профиль</a>
+    <br>
+    <a href="{% url 'about' %}">О сайте</a>
+    <br>
+    <a href="{% url 'deliv' %}">Доставка</a>
+    <br>
+    <a href="{% url 'start' %}">Стартовая страница</a>
+    <br>
+</body>
+</html>
