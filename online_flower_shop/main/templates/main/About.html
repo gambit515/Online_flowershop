@@ -4,22 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+
+    <title>Онлайн магазин Биба и Боба</title>
+	<link rel="stylesheet" href="{% static 'main/css/About.css' %}">
 </head>
 <body>
-    <a href="{% url 'auth' %}">Авторизация</a>
-    <br>
-    <a href="{% url 'reg' %}">Регистрация</a>
-    <br>
-    <a href="{% url 'main' %}">Основная страница</a>
-    <br>
-    <a href="{% url 'prof' %}">Профиль</a>
-    <br>
-    <a href="{% url 'about' %}">О сайте</a>
-    <br>
-    <a href="{% url 'deliv' %}">Доставка</a>
-    <br>
-    <a href="{% url 'start' %}">Стартовая страница</a>
-    <br>
+    <nav class="sh">
+            <div class="shapka">
+                <a href="{% url 'main' %}" class="brand">Онлайн магазин Биба и Боба</a>
+                <div class="wrap">
+                    <ul class="menu">
+                        <li><a href="{% url 'start' %}">Стартовая страница</a></li>
+                        <li><a href="#">Избранное</a></li>
+                        <li><a href="#">Корзина</a></li>
+                        <li><a href="{% url 'about' %}">О нас</a></li>
+                    </ul>
+
+                    <a href="{% url 'prof' %}" class="profile">Профиль</a>
+                    <br>
+                    <a href="{% url 'auth' %}" class="profile">Авторизация</a>
+                </div>
+
+            </div>
+    </nav>
+    <div class="o-nas">
+        <div class="vah-o-nas">
+            <p><b>О нашей команде:</b></p>
+        </div>
+        <p>GambitCorp. – это небольшая корпорация в численности с одним человеком. Раньше это корпорация называлась
+            GambitTeam, но благодаря огромному вкладу она возвышается до небес, благодаря всему этому
+            "Онлайн магазин Биба и Боба" начал давать черно-белые ростки. <br>
+            <p> <b>Руководитель:</b> <br> Амоскин Александр Федорович <br> Backend-разработчик, идейный вдохновитель и режисер этого бардака <br><br> </p>
+            <p> <b>Соруководители:</b> Трубинская Дарья Евгеньевна <br> Frontend-разработчик и дизайнер<br><br> </p>
+
+
+
+        </p>
+    </div>
+
+
+    <div class="podval" style="margin-top: 516px;">
+        <p> Контактная информация: &emsp;Phone:+7(902)**** ; &emsp;Email: GambitCorp@gmail.com; &emsp;Адрес: г.Красноярск, КрасРаб 31А; </p>
+    </div>
+
 </body>
 </html>

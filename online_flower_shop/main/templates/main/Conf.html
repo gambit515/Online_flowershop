@@ -4,22 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conf</title>
+    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+
+    <title>Онлайн магазин Биба и Боба</title>
+	<link rel="stylesheet" href="{% static 'main/css/Conf.css' %}">
 </head>
 <body>
-    <a href="{% url 'auth' %}">Авторизация</a>
-    <br>
-    <a href="{% url 'reg' %}">Регистрация</a>
-    <br>
-    <a href="{% url 'main' %}">Основная страница</a>
-    <br>
-    <a href="{% url 'prof' %}">Профиль</a>
-    <br>
-    <a href="{% url 'about' %}">О сайте</a>
-    <br>
-    <a href="{% url 'deliv' %}">Доставка</a>
-    <br>
-    <a href="{% url 'start' %}">Стартовая страница</a>
-    <br>
+        <nav class="sh">
+                <div class="shapka">
+                    <a href="{% url 'main' %}" class="brand">Онлайн магазин Биба и Боба</a>
+                    <div class="wrap">
+                        <ul class="menu">
+                            <li><a href="{% url 'start' %}">Стартовая страница</a></li>
+                            <li><a href="#">Избранное</a></li>
+                            <li><a href="#">Корзина</a></li>
+                            <li><a href="{% url 'about' %}">О нас</a></li>
+                        </ul>
+
+                        <a href="{% url 'prof' %}" class="profile">Профиль</a>
+                        <br>
+                        <a href="{% url 'auth' %}" class="profile">Авторизация</a>
+                    </div>
+
+                </div>
+        </nav>
+    <nav class="reg">
+		<div class="register">
+			<nav class="beebuzz" align="center" style="margin-top: 30px;">
+				<div class="beebuzz_name" >
+					<h1 style="padding: 20px 20px 10px;">Покупка в Бибе и Бобе</h1>
+				</div>
+			</nav>
+			<hr style="border: 1px solid #222222; width: 350px; margin-top: -15px;">
+            <p style="text-align: center;">Вы действительно хотите купить этот товар?</p>
+
+            <form id = "form-group" method="post" enctype="multipart/form-data" >
+                <!--{% csrf_token %}-->
+                <a href="#" class="button-reg" style="text-decoration: none;">Купить</a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="podval" style="margin-top: 505px;">
+        <p> Контактная информация: &emsp;Phone:+7(902)**** ; &emsp;Email: GambitCorp@gmail.com; &emsp;Адрес: г.Красноярск, КрасРаб 31А; </p>
+    </div>
+
+
+
 </body>
 </html>

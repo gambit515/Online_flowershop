@@ -4,22 +4,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof</title>
+    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+
+    <title>Онлайн магазин Биба и Боба</title>
+    <link rel="stylesheet" href="{% static 'main/css/Prof.css' %}">
 </head>
 <body>
-    <a href="{% url 'auth' %}">Авторизация</a>
-    <br>
-    <a href="{% url 'reg' %}">Регистрация</a>
-    <br>
-    <a href="{% url 'main' %}">Основная страница</a>
-    <br>
-    <a href="{% url 'prof' %}">Профиль</a>
-    <br>
-    <a href="{% url 'about' %}">О сайте</a>
-    <br>
-    <a href="{% url 'deliv' %}">Доставка</a>
-    <br>
-    <a href="{% url 'start' %}">Стартовая страница</a>
-    <br>
+    <nav class="sh">
+                <div class="shapka">
+                    <a href="{% url 'main' %}" class="brand">Онлайн магазин Биба и Боба</a>
+                    <div class="wrap">
+                        <ul class="menu">
+                            <li><a href="{% url 'start' %}">Стартовая страница</a></li>
+                            <li><a href="#">Избранное</a></li>
+                            <li><a href="#">Корзина</a></li>
+                            <li><a href="{% url 'about' %}">О нас</a></li>
+                        </ul>
+
+                        <a href="{% url 'prof' %}" class="profile">Профиль</a>
+                        <br>
+                        <a href="{% url 'auth' %}" class="profile">Авторизация</a>
+                    </div>
+
+                </div>
+    </nav>
+    <table style="height: 600px; margin: 20px 100px 20px 100px; border-bottom: 2px solid #222222;">
+        <tr>
+            <td width="500px" style="vertical-align: top;">
+				<img src="https://funik.ru/wp-content/uploads/2021/04/c83b51a6af0178fd19a6-1.jpg" width="420px" />
+			</td>
+            <td valign="top" style="width: 1400px;">
+                <div class="profile-text">
+                    <p class="main-menu-info">
+                        Псевдоним на сайте: <label class="dannye-bd">{{ request.user }}</label>
+                    </p>
+
+                    <p class="main-menu-info">
+                        ФИО пользователя: <label class="dannye-bd">{{ request.user.first_name }}</label>
+                    </p>
+
+                    <p class="main-menu-info">
+                        Описание пользователя: <p class="dannye-bd-desc">{{request.user.last_name}}</p>
+                    </p>
+
+                    <p class="main-menu-info">
+                        e-mail: <label class="dannye-bd">{{request.user.email}}</label>
+                    </p>
+
+                    <p class="main-menu-info">
+                        Занятость профиля: <label class="dannye-bd">{{ user.groups.all.0 }}</label>
+                    </p>
+                </div>
+            </td>
+            <td align="center" valign="top" style="width: 300px;">
+                <div class="button">
+                    <a href="#" style="text-decoration: none; color:#fbfbfb;">Редактировать профиль</a>
+                </div>
+
+                <!--<input class="button-redac" type="submit" value ="Редактировать профиль">-->
+
+                <div class="button">
+                    <a href="{% url 'logout' %}" style="text-decoration: none; color:#fbfbfb;">Выйти с аккаунта</a>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+
+	<p align="center" style="font-size: 26px;">Мои заказы</p>
+
+	<table align="center" border="1">
+		<tr>
+			<th width="300px">Номер заказа</th>
+			<th width="300px">Дата заказа</th>
+			<th width="300px">Статус</th>
+			<th width="300px">Сумма</th>
+			<th width="300px">Детали заказа</th>
+		</tr>
+	</table>
+
+<!--
+<div class="user-info">
+	<h2 style="text-align: center;">Информация о пользователе</h2>
+	<table style="height: 36px; margin-left: auto; margin-right: auto;">
+		<tbody>
+			<tr style="height: 10px;">
+				<td style="width: 100%; height: 10px; text-align: center;"><label for="name">ФИО:</label> <input type="text" id="name" name="name" value="Иванов Иван" /></td>
+			</tr>
+			<tr style="height: 10px;">
+				<td style="width: 100%; height: 10px; text-align: center;"><label for="email">Email:</label> <input type="email" id="email" name="email" value="ivanov@mail.com" /></td>
+			</tr>
+			<tr style="height: 10px;">
+				<td style="width: 100%; height: 10px; text-align: center;"><label for="phone">Телефон:</label> <input type="tel" id="phone" name="phone" value="+7 (999) 123-45-67" /></td>
+			</tr>
+			<tr style="height: 10px;">
+				<td style="width: 100%; height: 10px; text-align: center;"><label for="address">Адрес доставки:</label> <textarea id="address" name="address">г. Москва, ул. Пушкина, д. 10, кв. 5</textarea></td>
+			</tr>
+			<tr style="height: 10px;">
+				<td style="width: 100%; height: 10px; text-align: center;"><form><button type="submit">Сохранить</button></form></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="orders">
+	<h2 style="text-align: center;">Мои заказы</h2>
+	<table style="height: 36px; margin-left: auto; margin-right: auto;">
+		<thead>
+			<tr style="height: 18px;">
+				<th style="height: 18px; width: 110.75px; text-align: center;">Номер заказа</th>
+				<th style="height: 18px; width: 96.6719px; text-align: center;">Дата заказа</th>
+				<th style="height: 18px; width: 62.7812px; text-align: center;">Статус</th>
+				<th style="height: 18px; width: 71.2344px; text-align: center;">Сумма</th>
+				<th style="height: 18px; width: 116.641px; text-align: center;">Детали заказа</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr style="height: 18px;">
+				<td style="height: 18px; width: 110.75px;">#12345</td>
+				<td style="height: 18px; width: 96.6719px;">01.01.2021</td>
+				<td style="height: 18px; width: 62.7812px;">Оплачен</td>
+				<td style="height: 18px; width: 71.2344px;">5000 руб.</td>
+				<td style="height: 18px; width: 116.641px;"><a href="#">Подробнее</a></td>
+			</tr>другие заказы</tbody>
+	</table>
+	<p style="text-align: center;"></p>
+</div>
+-->
 </body>
 </html>

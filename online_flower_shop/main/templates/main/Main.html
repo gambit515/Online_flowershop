@@ -4,22 +4,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+
+
+    <title>Онлайн магазин Биба и Боба</title>
+    <link rel="stylesheet" href="{% static 'main/css/Main.css' %}">
 </head>
 <body>
-    <a href="{% url 'auth' %}">Авторизация</a>
-    <br>
-    <a href="{% url 'reg' %}">Регистрация</a>
-    <br>
-    <a href="{% url 'main' %}">Основная страница</a>
-    <br>
-    <a href="{% url 'prof' %}">Профиль</a>
-    <br>
-    <a href="{% url 'about' %}">О сайте</a>
-    <br>
-    <a href="{% url 'deliv' %}">Доставка</a>
-    <br>
-    <a href="{% url 'start' %}">Стартовая страница</a>
-    <br>
+    <nav class="sh">
+                <div class="shapka">
+                    <a href="{% url 'main' %}" class="brand">Онлайн магазин Биба и Боба</a>
+                    <div class="wrap">
+                        <ul class="menu">
+                            <li><a href="{% url 'start' %}">Стартовая страница</a></li>
+                            <li><a href="#">Избранное</a></li>
+                            <li><a href="#">Корзина</a></li>
+                            <li><a href="{% url 'about' %}">О нас</a></li>
+                        </ul>
+
+                        <a href="{% url 'prof' %}" class="profile">Профиль</a>
+                        <br>
+                        <a href="{% url 'auth' %}" class="profile">Авторизация</a>
+                    </div>
+
+                </div>
+    </nav>
+    <p align="center" style="font-size: 30px; border-bottom: 5px;">Мы сможем Вам помочь в выборе цветов!</p>
+	<hr align="center" style="border: 1px solid black; width: 900px; margin-top: -15px; margin-bottom: 20px;">
+
+
+	<table>
+		<tr>
+			<td width="300px">
+				<div class="category">
+					<ul class="category-menu">
+						<li><a href="#">Акции</a></li>
+						<li><a href="#">Цветы</a></li>
+						<li><a href="#">Букеты</a></li>
+						<li><a href="#">Композиции</a></li>
+					</ul>
+				</div>
+			</td>
+			<td width="1600px">
+				<p style="color: black; margin-left: 100px; font-size: 22px; font-weight: bold;">Хиты продаж</p>
+				<table>
+					<tr>
+						<td width="350px" align="center">
+							<img src="https://flowers-sib.ru/upload/iblock/9e6/9e6259cd6fc4a14574c8c77da6d90f07.jpg" width="270px" height="300px" style="border-radius: 30px; "/>
+							<p style="font-size: 20px; margin: 0; text-align: center; font-weight: bold;">Вялая хуйня</p>
+							<p style="font-size: 16px; margin: 0;">1000 р.</p>
+							<p style="font-size: 16px; margin: 0;">0 из 10</p>
+						</td>
+						<td width="350px" align="center">
+							<img src="https://flowers-sib.ru/upload/resize_cache/iblock/122/1350_1350_1/1228a304b22e179df2826b1c6ac6ad0e.jpg" width="270px" height="300px" style="border-radius: 30px; "/>
+							<p style="font-size: 20px; margin: 0; text-align: center; font-weight: bold;">Вялая хуйня</p>
+							<p style="font-size: 16px; margin: 0;">1000 р</p>
+							<p style="font-size: 16px; margin: 0;">0 из 10</p>
+						</td>
+						<td width="350px" align="center">
+							<img src="https://labyket24.ru/wp-content/uploads/2021/07/img_6044-scaled-1.jpg" width="270px" height="300px" style="border-radius: 30px; "/>
+							<p style="font-size: 20px; margin: 0; text-align: center; font-weight: bold;">Вялая хуйня</p>
+							<p style="font-size: 16px; margin: 0;">1000 р</p>
+							<p style="font-size: 16px; margin: 0;">0 из 10</p>
+						</td>
+						<td width="350px" align="center">
+							<img src="https://www.rosemarkt.ru/resources/data/photos/5447dcf49ef3e/big.jpg" width="270px" height="300px" style="border-radius: 30px; "/>
+							<p style="font-size: 20px; margin: 0; text-align: center; font-weight: bold;">Вялая хуйня</p>
+							<p style="font-size: 16px; margin: 0;">1000 р</p>
+							<p style="font-size: 16px; margin: 0;">0 из 10</p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+
+
+<!--
+	<nav class="category">
+		<div class="concat">
+			<ul class="category-menu">
+				<li><a href="#">Акции</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#">Цветы</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#">Букеты</a></li>
+				<li><a href="#">|</a></li>
+				<li><a href="#">Композиции</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+
+
+	<p>Хиты&nbsp;продаж:</p>
+	<table border="1" style="border-collapse: collapse; width: 67.6775%; height: 260px;">
+		<tbody>
+			<tr style="height: 242px;">
+				<td style="width: 25%; height: 242px; text-align: center;"><img src="https://flowers-sib.ru/upload/iblock/9e6/9e6259cd6fc4a14574c8c77da6d90f07.jpg" width="200" height="214" alt="" /></td>
+				<td style="width: 25%; height: 242px; text-align: center;"><img src="https://flowers-sib.ru/upload/resize_cache/iblock/122/1350_1350_1/1228a304b22e179df2826b1c6ac6ad0e.jpg" width="200" height="238" alt="" /></td>
+				<td style="width: 37.459%; height: 242px; text-align: center;"><img src="https://labyket24.ru/wp-content/uploads/2021/07/img_6044-scaled-1.jpg" width="200" height="267" alt="" /></td>
+			</tr>
+			<tr style="height: 18px;">
+				<td style="width: 25%; height: 18px; text-align: center;"><strong>Букет: Скарлет</strong></td>
+				<td style="width: 25%; height: 18px; text-align: center;"><strong>Букет: Весенняя&nbsp;легкость</strong></td>
+				<td style="width: 37.459%; height: 18px; text-align: center;"><strong>Букет:&nbsp;Вялая&nbsp;хуйня</strong></td>
+			</tr>
+		</tbody>
+	</table>
+-->
 </body>
 </html>
