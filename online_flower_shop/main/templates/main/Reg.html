@@ -26,9 +26,11 @@
                             <li><a href="{% url 'about' %}">О нас</a></li>
                         </ul>
 
+                        {% if request.user.is_authenticated %}
                         <a href="{% url 'prof' %}" class="profile">Профиль</a>
-                        <br>
-                        <a href="{% url 'auth' %}" class="profile">Авторизация</a>
+                        {% else %}
+                        <a href="{% url 'auth' %}" class="profile">Авторизация
+                            {% endif %}
                     </div>
 
                 </div>
@@ -75,7 +77,7 @@
 
 			<div class="msg"></div>
 			<form id = "form-group" method="post" enctype="multipart/form-data">
-				<!--{% csrf_token %}-->
+				{% csrf_token %}
 				<!-- Поставил ID элементам так как использую для скрипта-->
 
 				<div class="form-group">
@@ -107,12 +109,12 @@
 					{{ form.email }}
 					<!--<input class="vvod3" type="email" id = "mail" placeholder="Введите электронную почту" autocomplete="email">-->
 				</div>
-				<div class="form-group">
+				<!--<div class="form-group">
 					<div class="label-reg"> <label for = "user">Выберите роль на сайте</label> </div>
 					{{ form.groups }}
-					<!--<input class="vvod" type="text" placeholder="Введите псевдоним пользователя" id = "user_psevdomin" autocomplete="user_psevdomin">-->
+					<input class="vvod" type="text" placeholder="Введите псевдоним пользователя" id = "user_psevdomin" autocomplete="user_psevdomin">
 
-				</div>
+				</div>-->
 				<div class="form-group">
 					<div class="label-reg"> <label for = "user-desc">Введите описание</label> </div>
 					{{ form.last_name }}

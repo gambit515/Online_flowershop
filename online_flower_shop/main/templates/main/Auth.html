@@ -7,13 +7,15 @@
     <title>Auth</title>
 </head>
 <body>
-    <a href="{% url 'auth' %}">Авторизация</a>
-    <br>
     <a href="{% url 'reg' %}">Регистрация</a>
     <br>
     <a href="{% url 'main' %}">Основная страница</a>
     <br>
-    <a href="{% url 'prof' %}">Профиль</a>
+    {% if request.user.is_authenticated %}
+                        <a href="{% url 'prof' %}" class="profile">Профиль</a>
+                        {% else %}
+                        <a href="{% url 'auth' %}" class="profile">Авторизация
+                            {% endif %}
     <br>
     <a href="{% url 'about' %}">О сайте</a>
     <br>

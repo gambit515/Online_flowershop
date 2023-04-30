@@ -68,7 +68,10 @@ class RegView(CreateView): #Класс регистрации
     def form_valid(self, form):
         form_valid = super().form_valid(form)
         self.object.groups.clear()
-        self.object.groups.add(form.cleaned_data['groups'])
+        #self.object.groups.add(form.cleaned_data['groups'])
+        #self.object.groups.add(name='Пользователь')
+        group = Group.objects.get(name='Пользователь')
+        self.object.groups.add(group)
         username = form.cleaned_data["username"]
         password = form.cleaned_data["password"]
         aut_user = authenticate(username=username,password=password)

@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 
 
 class PostForm(forms.ModelForm):
-    groups = forms.ModelChoiceField(queryset=Group.objects.all())
+    #groups = forms.ModelChoiceField(queryset=Group.objects.all())
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput(attrs={
                 'class': 'vvod1',
                 'type': 'password',
@@ -17,7 +17,7 @@ class PostForm(forms.ModelForm):
             }),)
     class Meta:
         model = User
-        fields = ['username', 'first_name','last_name', 'email','password','groups']
+        fields = ['username', 'first_name','last_name', 'email','password']
         widgets = {
             "password": PasswordInput(attrs={
                 'class': 'vvod1',
@@ -90,7 +90,7 @@ class ProfileForm(forms.ModelForm):
 
 
 class RegForm(forms.ModelForm):
-    groups = forms.ModelChoiceField(queryset=Group.objects.all())
+    #groups = forms.ModelChoiceField(queryset=Group.objects.all())
     password2 = forms.CharField(label='Repeat password')
     class Meta:
         model = User

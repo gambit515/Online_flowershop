@@ -1,9 +1,12 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from online_flower_shop import settings
+
+default_group = Group.objects.get(name=settings.DEFAULT_GROUP_NAME)
 
 class Product(models.Model):
     Tittle = models.CharField('Название товара', blank=True, max_length=100)
