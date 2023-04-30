@@ -22,6 +22,20 @@ class STView(TemplateView):
 class MainView(ListView):
     model = Product
     template_name = 'main/Main.html'
+    success_url = reverse_lazy('main')
+
+    def get(self, request):
+        products = Product.objects.all()
+        cat = Category.objects.all()
+        subcat = SubCategory.objects.all()
+        context = {
+            'products': products,
+            'cat': cat,
+            'sub_cat': subcat,
+            'cat_selected': 0,
+            'sub_cat_selected': 0,
+        }
+        return render(request, 'main/Main.html', context)
 
 
 class ProdView(CreateView):
@@ -77,3 +91,35 @@ class RegView(CreateView): #Класс регистрации
         aut_user = authenticate(username=username,password=password)
         login(self.request, aut_user)
         return form_valid
+
+
+def show_cat(request,cat_id):
+    #anketas = Product.objects.filter(Soft_cat_id=cat_id)
+    products = Product.objects.filter(Cat_id=cat_id)
+    cat = Category.objects.all()
+    subcat = SubCategory.objects.all()
+    context = {
+        'products': products,
+        'cat': cat,
+        'sub_cat': subcat,
+        'cat_selected': cat_id,
+        'sub_cat_selected': 0,
+    }
+
+    return render(request, 'main/Main.html', context)
+
+
+def show_sub_cat(request,sub_cat_id):
+    #anketas = Product.objects.filter(Soft_cat_id=cat_id)
+    products = Product.objects.filter(SubCat_id=sub_cat_id)
+    cat = Category.objects.all()
+    subcat = SubCategory.objects.all()
+    context = {
+        'products': products,
+        'cat': cat,
+        'sub_cat': subcat,
+        'cat_selected': 0,
+        'sub_cat_selected': sub_cat_id,
+    }
+
+    return render(request, 'main/Main.html', context)

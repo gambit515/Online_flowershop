@@ -45,10 +45,32 @@
 			<td width="300px">
 				<div class="category">
 					<ul class="category-menu">
-						<li><a href="#">Акции</a></li>
+						<!--<li><a href="#">Акции</a></li>
 						<li><a href="#">Цветы</a></li>
 						<li><a href="#">Букеты</a></li>
-						<li><a href="#">Композиции</a></li>
+						<li><a href="#">Композиции</a></li>-->
+						{% if cat_selected == 0 and sub_cat_selected == 0 %}
+						<li >Все товары</li>
+						{% else %}
+						<li><a href="{% url 'main' %}" style="color: black; ">Все товары</a></li>
+						{% endif %}
+
+						{% for c in cat %}
+						{% if c.pk == cat_selected %}
+							<li>{{c.Tittle}}</li>
+						{% else %}
+							<li><a href="{{ c.get_absolute_url }}" style="color: black;">{{c.Tittle}}</li>
+						{% endif %}
+						{% for s_c in sub_cat %}
+						{% if s_c.Cat.pk == c.pk %}
+								{% if s_c.pk == sub_cat_selected %}
+									<li>{{s_c.Tittle}}</li>
+								{% else %}
+								<li><a href="{{ s_c.get_absolute_url }}" style="color: black;"><b>{{s_c.Tittle}}</b></a> </li>
+							{% endif %}
+							{% endif %}
+							{% endfor %}
+						{% endfor %}
 					</ul>
 				</div>
 			</td>
@@ -56,7 +78,7 @@
 				<p style="color: black; margin-left: 100px; font-size: 22px; font-weight: bold;">Хиты продаж</p>
 				<table>
 					<tr>
-						<td width="350px" align="center">
+						<!--<td width="350px" align="center">
 							<img src="https://flowers-sib.ru/upload/iblock/9e6/9e6259cd6fc4a14574c8c77da6d90f07.jpg" width="270px" height="300px" style="border-radius: 30px; "/>
 							<p style="font-size: 20px; margin: 0; text-align: center; font-weight: bold;">Вялая хуйня</p>
 							<p style="font-size: 16px; margin: 0;">1000 р.</p>
@@ -79,7 +101,16 @@
 							<p style="font-size: 20px; margin: 0; text-align: center; font-weight: bold;">Вялая хуйня</p>
 							<p style="font-size: 16px; margin: 0;">1000 р</p>
 							<p style="font-size: 16px; margin: 0;">0 из 10</p>
-						</td>
+						</td>-->
+						{% for pr in products %}
+						{{ pr.Tittle }}
+						<br>
+						{{ pr.Text }}
+						<br>
+						<img src='{{ pr.Photo.url }}'>
+						<br>
+						{{ pr.Price }}
+						{% endfor %}
 					</tr>
 				</table>
 			</td>

@@ -13,7 +13,8 @@ class Product(models.Model):
     Text = models.TextField('Текст товара', blank=True, max_length=1500)
     Photo = models.ImageField('Фотография товара', blank=True, upload_to="photo/%Y/%m/%d/")
     Price = models.IntegerField('Цена товара', blank=True,)
-    SubCat = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True, verbose_name="Категория товара")
+    Cat = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, verbose_name="Категория товара")
+    SubCat = models.ForeignKey('SubCategory', on_delete=models.CASCADE, blank=True, verbose_name="Подкатегория товара")
 
     def get_absolute_url(self):
        return reverse('product', kwargs = {'product_id': self.pk})
@@ -49,7 +50,7 @@ class Category(models.Model):
     Tittle = models.CharField('Название категории', blank=True, max_length=100)
 
     def get_absolute_url(self):
-       return reverse('cat', kwargs = {'cat_id': self.pk})
+       return reverse('show_cat', kwargs = {'cat_id': self.pk})
 
     def __str__(self):
         return self.Tittle
@@ -65,7 +66,7 @@ class SubCategory(models.Model):
     Cat = models.ForeignKey('Category', on_delete=models.CASCADE, blank=True, verbose_name="Основная категория")
 
     def get_absolute_url(self):
-       return reverse('subcat', kwargs = {'subcat_id': self.pk})
+       return reverse('show_sub_cat', kwargs = {'sub_cat_id': self.pk})
 
     def __str__(self):
         return self.Tittle
