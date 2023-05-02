@@ -46,8 +46,9 @@
             <p style="text-align: center;">Вы действительно хотите купить этот товар?</p>
 
             <form id = "form-group" method="post" enctype="multipart/form-data" >
-                <!--{% csrf_token %}-->
-                <a href="#" class="button-reg" style="text-decoration: none;">Купить</a>
+                {% csrf_token %}
+                <input class="button-reg" type="submit" value="Поместить в корзину">
+                <!--<a href="#" class="button-reg" style="text-decoration: none;">Купить</a>-->
             </form>
         </div>
     </nav>

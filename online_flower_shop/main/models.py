@@ -29,10 +29,10 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    Order_User = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, verbose_name="Заказчик")
-    Order_Prod = models.ForeignKey('Product', on_delete=models.CASCADE, blank=True, verbose_name="Заказанный товар")
-    Quantity = models.IntegerField('Количество', blank=True,)
-    Status = models.CharField('Статус', blank=True, max_length=50)
+    Order_User = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, verbose_name="Заказчик",null=True)
+    Order_Prod = models.ForeignKey('Product', on_delete=models.CASCADE, blank=True, verbose_name="Заказанный товар",null=True)
+    Quantity = models.IntegerField('Количество', blank=True,null=True)
+    Status = models.CharField('Статус', blank=True, max_length=50,null=True)
 
     def get_absolute_url(self):
        return reverse('order', kwargs = {'order_id': self.pk})

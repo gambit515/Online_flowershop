@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -47,21 +48,24 @@
 		<p style="font-size: 26px; text-align: right; margin-right: 100px; margin-top: 100px;">
 			Итого:
 			<!--сумма цены-->
+			{{tp}}
 			руб.
 		</p>
 	</div>
 
 	<table>
+		{% for c in ord %}
 		<tr>
 			<td>
-				<!--картинка    примерный код:
-				<src img="#" width="300px">
-				-->
+				<img src='{{ c.Order_Prod.Photo.url }}' width="300px"> <!-- Фото, можно было не подписывать =D -->
 			</td>
 			<td>
-				<!--название, описание(?), цена-->
+				{{ c.Order_Prod.Tittle }} <!-- Название -->
+				{{ c.Order_Prod.Price }} <!-- Цена -->
+					{{ c.Quantity }} <!-- Количество -->
 			</td>
 		</tr>
+		{% endfor %}
 	</table>
 	
 	

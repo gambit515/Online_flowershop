@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from .models import Profile
+from .models import Profile, Order
 from django.contrib.auth.models import User, Group
 from django.forms import ModelForm, TextInput, EmailInput, Textarea, ClearableFileInput, PasswordInput
 from django.contrib.auth.forms import AuthenticationForm
@@ -96,3 +96,18 @@ class RegForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name','last_name', 'email','password','groups']
+
+
+class OtklForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['Order_User','Order_Prod','Quantity','Status']
+        widgets = {
+            "Anketa": TextInput(attrs={
+                'class': 'vvod',
+                'type': 'text',
+                'placeholder': 'Введите номер анкеты',
+                'id': 'anketa_tittle',
+                'autocomplete': 'anketa_tittle'
+            }),
+        }

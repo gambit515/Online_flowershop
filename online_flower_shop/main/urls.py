@@ -7,7 +7,7 @@ from .views import *
 urlpatterns = [
     path('',STView.as_view(), name = 'start'),
     path('Main/',MainView.as_view(), name = 'main'),
-    path('Main/Prod',ProdView.as_view(), name = 'prod'),
+    path('Main/Prod/<int:product_id>/',conf_prod, name = 'product'),
     path('Main/Prod/Confirmation',ConfView.as_view(), name = 'conf'),
     path('Auth/',AuthView.as_view(), name = 'auth'),
     path('cat/<int:cat_id>/', show_cat, name='show_cat'),

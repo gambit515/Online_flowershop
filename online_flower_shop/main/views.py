@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db import transaction
@@ -8,7 +9,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import ListView, CreateView, TemplateView
 from django.urls import reverse_lazy
-from .forms import ProfileForm, UserForm, RegForm, PostForm
+from .forms import ProfileForm, UserForm, RegForm, PostForm, OtklForm
 
 from .forms import AuthUserForm
 
@@ -69,6 +70,17 @@ class KorzView(ListView):
     model = Order
     template_name = 'main/Korz.html'
 
+    def get(self, request):
+        orders = Order.objects.all()
+        products = Product.objects.all()
+        totalprice = list(Order.objects.aggregate(Sum('Order_Prod__Price')).values())[0]
+        context = {
+            'ord': orders,
+            'prod': products,
+            'tp': totalprice,
+        }
+        return render(request, 'main/Korz.html', context)
+
 class AboutView(TemplateView):
     template_name = 'main/About.html'
 
@@ -126,3 +138,22 @@ def show_sub_cat(request,sub_cat_id):
     }
 
     return render(request, 'main/Main.html', context)
+
+def conf_prod(request,product_id):
+    context = {
+        'product_id': product_id
+    }
+    if request.method == 'POST':
+        form = OtklForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.Order_User = request.user
+            instance.Order_Prod = Product.objects.get(id=product_id)
+            instance.Quantity = 1;
+            instance.Status = False;
+            instance.save()
+            return render(request, 'main/ST.html')
+    else:
+        form = OtklForm()
+
+    return render(request,'main/Conf.html', {'form': form} )
