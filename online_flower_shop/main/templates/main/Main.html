@@ -45,11 +45,11 @@
 			<td width="300px">
 				<div class="category">
 					<ul class="category-menu">
-					{% if cat_selected == 0 and sub_cat_selected == 0 %}
-					<li >Все товары</li>
-					{% else %}
-					<li><a href="{% url 'main' %}" style="color: black; ">Все товары</a></li>
-					{% endif %}
+						{% if cat_selected == 0 and sub_cat_selected == 0 %}
+						<li >Все товары</li>
+							{% else %}
+						<li><a href="{% url 'main' %}" style="color: black; ">Все товары</a></li>
+							{% endif %}
 
 					{% for c in cat %}
 					{% if c.pk == cat_selected %}
@@ -62,7 +62,10 @@
 					{% if s_c.pk == sub_cat_selected %}
 					<li><h4>{{s_c.Tittle}}</h4></li>
 					{% else %}
-					<li><h4><a href="{{ s_c.get_absolute_url }}" style="color: black;"><b>{{s_c.Tittle}}</b></a></h4> </li>
+					<li><a href="{{ s_c.get_absolute_url }}" style="color: black; font-size: 18px; margin-left: 15px;"><b>{{s_c.Tittle}}</b></a> </li>
+					
+						
+										
 					{% endif %}
 					{% endif %}
 					{% endfor %}

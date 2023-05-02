@@ -102,4 +102,6 @@ body {
     list-style-type: none;
    }
 
-   
+   .category-menu ol {
+    list-style-type: disc;
+   }
