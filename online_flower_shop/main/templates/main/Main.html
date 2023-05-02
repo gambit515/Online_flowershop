@@ -53,16 +53,16 @@
 
 					{% for c in cat %}
 					{% if c.pk == cat_selected %}
-					<li>{{c.Tittle}}</li>
+					<li><{{c.Tittle}}</li>
 					{% else %}
 					<li><a href="{{ c.get_absolute_url }}" style="color: black;">{{c.Tittle}}</li>
 					{% endif %}
 					{% for s_c in sub_cat %}
 					{% if s_c.Cat.pk == c.pk %}
 					{% if s_c.pk == sub_cat_selected %}
-					<li>{{s_c.Tittle}}</li>
+					<li><h4>{{s_c.Tittle}}</h4></li>
 					{% else %}
-					<li><a href="{{ s_c.get_absolute_url }}" style="color: black;"><b>{{s_c.Tittle}}</b></a> </li>
+					<li><h4><a href="{{ s_c.get_absolute_url }}" style="color: black;"><b>{{s_c.Tittle}}</b></a></h4> </li>
 					{% endif %}
 					{% endif %}
 					{% endfor %}
