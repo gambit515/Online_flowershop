@@ -65,6 +65,9 @@ class DelivView(ListView):
     model = Order
     template_name = 'main/Deliv.html'
 
+class KorzView(ListView):
+    model = Order
+    template_name = 'main/Korz.html'
 
 class AboutView(TemplateView):
     template_name = 'main/About.html'
