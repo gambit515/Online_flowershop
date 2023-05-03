@@ -43,14 +43,7 @@
 	<p style="font-size: 30px; border-bottom: 5px; text-align: center;">Моя корзина</p>
 	<hr align="center" style="border: 1px solid black; width: 1700px; margin: -20px 0 15px 50px">
 
-	<div>
-		<p style="font-size: 26px; text-align: right; margin-right: 100px; margin-top: 100px;">
-			Итого:
-			<!--сумма цены-->
-			{{tp}}
-			руб.
-		</p>
-	</div>
+	
 
 	<table align="center">
 		{% for c in ord %}
@@ -109,6 +102,15 @@
 		{% endfor %}
 	</table>
 	
+	<div>
+		<p style="font-size: 26px; margin-top: 100px; text-align: center;">
+			Итого:
+			<!--сумма цены-->
+			{{tp}}
+			руб.
+		</p>
+	</div>
+
 	<form id = "form-group" method="post" enctype="multipart/form-data" align="center">
 		{% csrf_token %}
 		<input class="button-regg" type="submit" value="Оплатить покупку">
