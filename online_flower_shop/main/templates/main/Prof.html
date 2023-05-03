@@ -21,7 +21,6 @@
                     <div class="wrap">
                         <ul class="menu">
                             <li><a href="{% url 'start' %}">Стартовая страница</a></li>
-                            <li><a href="#">Избранное</a></li>
                             <li><a href="#">Корзина</a></li>
                             <li><a href="{% url 'about' %}">О нас</a></li>
                         </ul>
@@ -38,7 +37,7 @@
     <table style="height: 600px; margin: 20px 100px 20px 100px; border-bottom: 2px solid #222222;">
         <tr>
             <td width="500px" style="vertical-align: top;">
-				<img src="https://funik.ru/wp-content/uploads/2021/04/c83b51a6af0178fd19a6-1.jpg" width="420px" />
+				<img src="{% static 'main/images/Face.jpg' %}" width="420px" />
 			</td>
             <td valign="top" style="width: 1400px;">
                 <div class="profile-text">
