@@ -54,6 +54,7 @@
 
 	<table align="center">
 		{% for c in ord %}
+		{% if request.user.id == c.Order_User.id %}
 		<tr>
 			<td>
 				<img src='{{ c.Order_Prod.Photo.url }}' width="300px"> <!-- Фото, можно было не подписывать =D -->
@@ -76,6 +77,7 @@
 				</form>
 			</td>
 		</tr>
+		{% endif %}
 		{% endfor %}
 	</table>
 	
