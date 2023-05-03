@@ -53,20 +53,30 @@
 		</p>
 	</div>
 
-	<table>
+	<table align="center">
 		{% for c in ord %}
-		{% if request.user == c.Order_User %}
 		<tr>
 			<td>
 				<img src='{{ c.Order_Prod.Photo.url }}' width="300px"> <!-- Фото, можно было не подписывать =D -->
 			</td>
-			<td>
-				{{ c.Order_Prod.Tittle }} <!-- Название -->
-				{{ c.Order_Prod.Price }} <!-- Цена -->
+			<td width="800px">
+				<div style="font-weight: bold; text-indent: 20px;">
+					{{ c.Order_Prod.Tittle }} <!-- Название -->
+				</div>
+				<div style="text-indent: 20px; padding-top: 10px; padding-bottom: 10px;">
+					{{ c.Order_Prod.Price }} <!-- Цена -->
+					х
 					{{ c.Quantity }} <!-- Количество -->
+					шт.
+				</div>
+			</td>
+			<td width="500px">
+				<form id = "form-group" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<input class="button-reg" type="submit" value="Убрать из корзины">
+				</form>
 			</td>
 		</tr>
-		{% endif %}
 		{% endfor %}
 	</table>
 	
