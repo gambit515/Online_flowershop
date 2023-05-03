@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -57,18 +58,20 @@ class AuthView(LoginView):
         return self.success_url
 
 
-class ProfView(ListView):
+class ProfView(LoginRequiredMixin,ListView):
     model = Profile
     template_name = 'main/Prof.html'
+    login_url = reverse_lazy('auth')
 
 
 class DelivView(ListView):
     model = Order
     template_name = 'main/Deliv.html'
 
-class KorzView(ListView):
+class KorzView(LoginRequiredMixin,ListView):
     model = Order
     template_name = 'main/Korz.html'
+    login_url = reverse_lazy('auth')
 
     def get(self, request):
         orders = Order.objects.all()
