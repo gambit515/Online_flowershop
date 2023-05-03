@@ -54,30 +54,56 @@
 
 	<table align="center">
 		{% for c in ord %}
-		{% if request.user.id == c.Order_User.id %}
 		<tr>
 			<td>
 				<img src='{{ c.Order_Prod.Photo.url }}' width="300px"> <!-- Фото, можно было не подписывать =D -->
 			</td>
-			<td width="800px">
-				<div style="font-weight: bold; text-indent: 20px;">
-					{{ c.Order_Prod.Tittle }} <!-- Название -->
-				</div>
-				<div style="text-indent: 20px; padding-top: 10px; padding-bottom: 10px;">
-					{{ c.Order_Prod.Price }} <!-- Цена -->
-					х
-					{{ c.Quantity }} <!-- Количество -->
-					шт.
-				</div>
+			<td width="1000px">
+				<table>
+					<tr>
+						<td width="800px">
+							<div style="font-weight: bold; text-indent: 20px;">
+								{{ c.Order_Prod.Tittle }} <!-- Название -->
+							</div>
+							<div style="text-indent: 20px; padding-top: 10px; padding-bottom: 10px;">
+								{{ c.Order_Prod.Price }} <!-- Цена -->
+								х
+								{{ c.Quantity }} <!-- Количество -->
+								шт.
+							</div>
+						</td>
+						<td width="250px">
+							<table style="margin-top: 15px; margin-left: 50px;">
+								<tr>
+									<td width="30px">
+										<form id = "form-group" method="post" enctype="multipart/form-data">
+											{% csrf_token %}
+											<input class="button-reggg" type="submit" value="-">
+										</form> 
+									</td>
+									<td width="190px" style="text-align: center;">
+										{{ c.Quantity }} <!-- Количество -->
+										шт.
+									</td>
+									<td width="30px">
+										<form id = "form-group" method="post" enctype="multipart/form-data">
+											{% csrf_token %}
+											<input class="button-reggg" type="submit" value="+">
+										</form>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
 			</td>
-			<td width="500px">
+			<td width="300px" >
 				<form id = "form-group" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
 					<input class="button-reg" type="submit" value="Убрать из корзины">
 				</form>
 			</td>
 		</tr>
-		{% endif %}
 		{% endfor %}
 	</table>
 	
