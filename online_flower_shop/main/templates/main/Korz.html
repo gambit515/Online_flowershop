@@ -79,6 +79,10 @@
 		{% endfor %}
 	</table>
 	
+	<form id = "form-group" method="post" enctype="multipart/form-data" align="center">
+		{% csrf_token %}
+		<input class="button-regg" type="submit" value="Оплатить покупку">
+	</form>
 	
 	<div class="podval" style="margin-top: 600px;">
         <p> Контактная информация: &emsp;Phone:+7(902)**** ; &emsp;Email: GambitCorp@gmail.com; &emsp;Адрес: г.Красноярск, КрасРаб 31А; </p>
