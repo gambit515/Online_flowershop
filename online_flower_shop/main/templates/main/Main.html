@@ -53,14 +53,14 @@
 
 					{% for c in cat %}
 					{% if c.pk == cat_selected %}
-					<li><{{c.Tittle}}</li>
+					<li>{{c.Tittle}}</li>
 					{% else %}
 					<li><a href="{{ c.get_absolute_url }}" style="color: black;">{{c.Tittle}}</li>
 					{% endif %}
 					{% for s_c in sub_cat %}
 					{% if s_c.Cat.pk == c.pk %}
 					{% if s_c.pk == sub_cat_selected %}
-					<li><h4>{{s_c.Tittle}}</h4></li>
+					<li>{{s_c.Tittle}}</li>
 					{% else %}
 					<li><a href="{{ s_c.get_absolute_url }}" style="color: black; font-size: 18px; margin-left: 15px;"><b>{{s_c.Tittle}}</b></a> </li>
 					
@@ -94,8 +94,11 @@
 							<div style="text-indent: 30px; margin-top: 10px;">
 								<i>{{ pr.Price }} <label>руб.</label></i> <br><br>
 							</div>
-
+							{% if request.user.is_authenticated %}
 							<a href="{{pr.get_absolute_url}}" style="margin-left: 20px; padding: 10px 60px; background-color: #222222; color: white">Купить</a>
+							{% else %}
+							<a href="{% url 'auth' %}" style="margin-left: 20px; padding: 10px 60px; background-color: #222222; color: white">Авторизация</a>
+							{% endif %}
 							<br><br>
 						</td>
 							<hr style="border: 1px solid black;">

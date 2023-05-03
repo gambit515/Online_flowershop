@@ -73,7 +73,7 @@ class KorzView(ListView):
     def get(self, request):
         orders = Order.objects.all()
         products = Product.objects.all()
-        totalprice = list(Order.objects.aggregate(Sum('Order_Prod__Price')).values())[0]
+        totalprice = list(Order.objects.filter(Order_User=request.user.id).aggregate(Sum('Order_Prod__Price')).values())[0]
         context = {
             'ord': orders,
             'prod': products,
