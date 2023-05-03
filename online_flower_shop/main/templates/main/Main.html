@@ -48,19 +48,19 @@
 						{% if cat_selected == 0 and sub_cat_selected == 0 %}
 						<li >Все товары</li>
 							{% else %}
-						<li><a href="{% url 'main' %}" style="color: black; ">Все товары</a></li>
+						<li><b><a href="{% url 'main' %}" style="color: black; ">Все товары</a></b></li>
 							{% endif %}
 
 					{% for c in cat %}
 					{% if c.pk == cat_selected %}
-					<li>{{c.Tittle}}</li>
+						<li><div style="color: black;">{{c.Tittle}}</div></li>
 					{% else %}
-					<li><a href="{{ c.get_absolute_url }}" style="color: black;">{{c.Tittle}}</li>
+					<li><b><a href="{{ c.get_absolute_url }}" style="color: black;">{{c.Tittle}}</b></li>
 					{% endif %}
 					{% for s_c in sub_cat %}
 					{% if s_c.Cat.pk == c.pk %}
 					{% if s_c.pk == sub_cat_selected %}
-					<li>{{s_c.Tittle}}</li>
+						<li><div style="color: black; font-size: 18px; margin-left: 15px;">{{s_c.Tittle}}</div></li>
 					{% else %}
 					<li><a href="{{ s_c.get_absolute_url }}" style="color: black; font-size: 18px; margin-left: 15px;"><b>{{s_c.Tittle}}</b></a> </li>
 					
